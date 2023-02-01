@@ -13,17 +13,45 @@ export default {
     default: "default"
   },
 
+  /** menu props */
   menu: {
-    type: Array,
-    default: []
+    type: Object,
+    default: ElMenu.props,
   },
 
-  ...ElHeader.props,
-  ...ElAside.props,
-  ...ElMain.props,
-  ...ElFooter.props,
-  ...ElMenu.props,
-  ...ElMenuItem.props,
-  ...ElMenuItemGroup.props,
-  ...ElSubMenu.props
+  /** subMenu props */
+  subMenu: {
+    type: Object,
+    default: ElSubMenu.props
+  },
+
+  /** menuItem props */
+  menuItem: {
+    type: Object,
+    default: ElMenuItem.props,
+  },
+
+  /** menuItemGroup props */
+  menuItemGroup: {
+    type: Object,
+    default: ElMenuItemGroup.props
+  },
+
+  /** header props */
+  header: {
+    type: Object,
+    default: ElHeader.props,
+  },
+
+  /** aside props */
+  aside: {
+    type: Object,
+    default: ElAside.props,
+  },
+
+  /** footer props */
+  footer: {
+    type: Object,
+    default: ElFooter.props,
+  },
 };

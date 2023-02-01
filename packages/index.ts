@@ -3,11 +3,11 @@ export type {
   } from "./types";
   
   import type { App } from "vue";
-  import Descriptions from "./components/layout";
+  import Layout from "./components/layout";
   
-  export const SnailLayout = Object.assign(Descriptions, {
+  export const SnailLayout = Object.assign(Layout, {
     install: function (app: App) {
-      app.component(Descriptions.name, Descriptions);
+      app.component(Layout.name, Layout);
     }
   });
   

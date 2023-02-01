@@ -21,7 +21,9 @@ export default defineComponent({
       slots?.logo 
         ? logoSlot
         : null;
-
+    console.log('---props----', data, type, unref(type), props)
+    console.log('---slots---', slots)
+    console.log('---attrs---', attrs)
     return () => (
         <ElContainer>
             <Header {...props}>

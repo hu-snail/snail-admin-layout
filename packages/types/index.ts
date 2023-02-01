@@ -26,5 +26,5 @@ import type {
   export interface SnailLayoutProps  {
     data: Array<any>;
     type?: LayoutType;
-    menu: Array<MenuProps>
+    menu: MenuProps
   }
