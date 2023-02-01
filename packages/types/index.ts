@@ -1,9 +1,10 @@
-import type {
+  import type {
     MenuItemRegistered,
     MenuItemClicked,
     MenuProvider,
     SubMenuProvider
   } from "element-plus/es/components/menu/src/types";
+  import { PropType } from "vue";
   /**
    * @description 
    * @param {string} LayoutType 布局类型
@@ -26,5 +27,48 @@ import type {
   export interface SnailLayoutProps  {
     data: Array<any>;
     type?: LayoutType;
-    menu: MenuProps
+    menu: MenuProps,
+    subMenu: SubMenuProvider,
+    menuItem: MenuItemRegistered,
+  }
+
+  export type childrenType = {
+    path?: string;
+    noShowingChildren?: boolean;
+    children?: childrenType[];
+    value: unknown;
+    meta?: {
+      icon?: string;
+      title?: string;
+      showParent?: boolean;
+      extraIcon?: {
+        svg?: boolean;
+        name?: string;
+      };
+    };
+    showTooltip?: boolean;
+    parentId?: number;
+    pathList?: number[];
+  };
+
+  export type routeMetaType = {
+    title?: string;
+    icon?: string;
+    showLink?: boolean;
+    savedPosition?: boolean;
+    auths?: Array<string>;
+  };
+  
+  export type RouteConfigs = {
+    path?: string;
+    parentPath?: string;
+    query?: object;
+    params?: object;
+    meta?: routeMetaType;
+    children?: RouteConfigs[];
+    name?: string;
+  };
+  
+  export interface MenuItemProps {
+    item: object 
   }

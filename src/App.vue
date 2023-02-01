@@ -3,18 +3,73 @@ import { ref } from "vue";
 import { SnailLayout } from "../packages";
 const data = ref([
   {
-    id: 1,
-    name: '小李'
+    path: '/',
+    component: 'Layout',
+    redirect: 'index',
+    children: [
+      {
+        path: '/index',
+        name: 'Index',
+        component: '',
+        meta: {
+          title: '首页',
+          icon: 'home',
+          affix: true,
+          noKeepAlive: true,
+        },
+      },
+    ],
   },
   {
-    id: 2,
-    name: '小胡'
-  }
+    path: '/comp',
+    component: 'Layout',
+    name: 'Comp',
+    meta: { title: '组件', icon: '' },
+    children: [
+      {
+        path: '/iconPark',
+        name: 'IconPark',
+        component: '',
+        meta: {
+          title: '图标',
+        },
+        children: [
+          {
+            path: '/iconPark2',
+            name: 'IconPark2',
+            component: '',
+            meta: {
+              title: '图标2211',
+            },
+          },
+        ],
+      },
+      {
+        path: '/iconPark233',
+        name: 'IconPark3',
+        component: () => '',
+        meta: {
+          title: '图标2233',
+        },
+      },
+      {
+        path: '/iconPark234',
+        name: 'IconPark3',
+        component: () => '',
+        meta: {
+          title: '测试',
+        },
+      },
+    ],
+  },
 ])
 </script>
 
 <template>
-  <SnailLayout :data="data" type="topAside">
+  <SnailLayout
+  :data="data"
+  type="topAside"
+  :header="{height: '60px'}">
     <template #logo>
       <img src="" />
     </template>
