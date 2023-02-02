@@ -68,11 +68,13 @@ const data = ref([
 <template>
   <SnailLayout
   :data="data"
-  type="topAside"
-  :header="{height: '60px'}">
+  type="default"
+  :header="{height: '60px'}"
+  >
     <template #logo>
       <img src="" />
     </template>
+    <div>2222</div>
   </SnailLayout>
 </template>
 

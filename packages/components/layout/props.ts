@@ -1,4 +1,13 @@
-import { ElHeader, ElAside, ElMain, ElFooter, ElMenu, ElMenuItem, ElMenuItemGroup, ElSubMenu } from "element-plus";
+import {
+  ElHeader,
+  ElAside,
+  ElMain,
+  ElFooter,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubMenu
+} from "element-plus";
 
 export default {
   /** menu data */
@@ -12,46 +21,21 @@ export default {
     type: String,
     default: "default"
   },
-
-  /** menu props */
-  menu: {
-    type: Object,
-    default: ElMenu.props,
+  headerHeight: {
+    type: String,
+    default: ElHeader.props.height
   },
-
-  /** subMenu props */
-  subMenu: {
-    type: Object,
-    default: ElSubMenu.props
+  footerHeight: {
+    type: String,
+    default: ElFooter.props.height
   },
-
-  /** menuItem props */
-  menuItem: {
-    type: Object,
-    default: ElMenuItem.props,
+  asideWidth: {
+    type: String,
+    default: ElAside.props.width
   },
-
-  /** menuItemGroup props */
-  menuItemGroup: {
-    type: Object,
-    default: ElMenuItemGroup.props
-  },
-
-  /** header props */
-  header: {
-    type: Object,
-    default: ElHeader.props,
-  },
-
-  /** aside props */
-  aside: {
-    type: Object,
-    default: ElAside.props,
-  },
-
-  /** footer props */
-  footer: {
-    type: Object,
-    default: ElFooter.props,
-  },
+  ...ElMenu.props,
+  ...ElSubMenu.props,
+  ...ElMenuItem.props,
+  ...ElMenuItemGroup.props,
+  ...ElHeader.props
 };
