@@ -2,7 +2,7 @@
 import { ref, onMounted, nextTick, reactive, watch } from "vue";
 import { Close } from "@element-plus/icons-vue";
 
-const tabsRef = ref(null);
+const tabsRef = ref();
 
 const tabList = ref([
   {
@@ -69,8 +69,6 @@ watch(
   () => tabOption.activeTab,
   val => {
     let len = tabList.value.length;
-    // let moveWidth = (tabList.value.length - tabOption.tabsCount) * tabOption.width - tabOption.unoccupied
-    // 如有重复数据退出后续函数执行
     for (let i = 0; i < len; i++) {
       if (tabList.value[i].path === val) {
         nextTick(() => {
@@ -80,7 +78,6 @@ watch(
       }
     }
     nextTick(() => {
-      // (总共有多少个tabs - 未偏移时可见的元素个数) * 单个tab标签元素长度 - 被遮挡tab元素的可见部分的宽度
       translateX(
         (tabList.value.length - tabOption.tabsCount) * tabOption.width -
           tabOption.unoccupied
@@ -90,24 +87,29 @@ watch(
 );
 
 onMounted(() => {
-  nextTick(() => {
-    let tabs = tabsRef.value;
-    let getStyle = getComputedStyle(tabs.children[0].children[0], null);
-    let marginLeft = parseFloat(
-      getStyle.marginLeft.substr(0, getStyle.marginLeft.length - 2)
-    );
-    let marginRight = parseFloat(
-      getStyle.marginRight.substr(0, getStyle.marginRight.length - 2)
-    );
-    tabOption.width =
-      marginLeft + marginRight + tabs.children[0].children[0].offsetWidth;
-    tabOption.unoccupied = tabs.offsetWidth % tabOption.width;
-    tabOption.differ = tabOption.width - tabOption.unoccupied;
-    tabOption.unoccupied =
-      tabOption.differ < 10 ? tabOption.width : tabOption.unoccupied;
-    tabOption.tabsCount = parseInt(tabs.offsetWidth / tabOption.width);
-  });
+  nextTick(() => initTabBar());
 });
+
+/**
+ * @description 初始化tabs
+ */
+const initTabBar = (): any => {
+  let tabs = tabsRef.value;
+  let getStyle = getComputedStyle(tabs.children[0].children[0], null);
+  let marginLeft = parseFloat(
+    getStyle.marginLeft.substr(0, getStyle.marginLeft.length - 2)
+  );
+  let marginRight = parseFloat(
+    getStyle.marginRight.substr(0, getStyle.marginRight.length - 2)
+  );
+  tabOption.width =
+    marginLeft + marginRight + tabs.children[0].children[0].offsetWidth;
+  tabOption.unoccupied = tabs.offsetWidth % tabOption.width;
+  tabOption.differ = tabOption.width - tabOption.unoccupied;
+  tabOption.unoccupied =
+    tabOption.differ < 10 ? tabOption.width : tabOption.unoccupied;
+  tabOption.tabsCount = parseInt(tabs.offsetWidth) / tabOption.width;
+};
 
 const clickTab = path => {
   if (tabOption.activeTab !== path) tabOption.activeTab = path;
@@ -155,7 +157,11 @@ const translateX = x => {
       box-sizing: border-box;
       align-items: center;
       transition: 0.2s;
-    
+      .tab-item.active + .tab-item {
+        .tab-title::before {
+          display: none;
+        }
+      }
       .tab-item {
         width: 130px;
         display: flex;
@@ -188,7 +194,7 @@ const translateX = x => {
             width: 1px;
             content: "";
             background-color: #bababa;
-            transition: display .5s;
+            transition: display 0.5s;
           }
         }
         &::before,
@@ -215,6 +221,11 @@ const translateX = x => {
           .tab-title::before {
             display: none;
           }
+          & + .tab-item {
+            .tab-title::before {
+              display: none;
+            }
+          }
         }
         &:hover::before,
         &:hover::after {
@@ -228,11 +239,6 @@ const translateX = x => {
             box-shadow: 0 0 0 30px #fff;
           }
           .tab-title::before {
-            display: none;
-          }
-        }
-        .tab-item.active + .tab-item {
-            .tab-title::before {
             display: none;
           }
         }
