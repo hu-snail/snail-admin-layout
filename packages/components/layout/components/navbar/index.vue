@@ -16,7 +16,59 @@ import { DArrowLeft } from "@element-plus/icons-vue";
         </el-breadcrumb>
       </div>
     </div>
-    <div class="right-tool"></div>
+    <div class="right-tool">
+      <div class="tool-btns">
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-search />
+          </el-icon>
+        </span>
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-remind />
+          </el-icon>
+        </span>
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-translate />
+          </el-icon>
+        </span>
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-full-screen />
+          </el-icon>
+        </span>
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-refresh />
+          </el-icon>
+        </span>
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-sun-one />
+          </el-icon>
+        </span>
+        <span class="icon-item">
+          <el-icon class="icon">
+            <i-park-setting-two />
+          </el-icon>
+        </span>
+      </div>
+      <div class="user-container">
+        <el-dropdown :hide-on-click="false">
+          <span class="el-dropdown-link">
+            admin <el-icon class="el-icon--right"><i-park-down /></el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>个人信息</el-dropdown-item>
+              <el-dropdown-item>github</el-dropdown-item>
+              <el-dropdown-item divided>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,6 +134,23 @@ import { DArrowLeft } from "@element-plus/icons-vue";
         border-radius: 0 6px 6px 0;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
       }
+    }
+  }
+  .right-tool {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    .icon-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 26px;
+      width: 34px;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    .user-container {
+      margin-left: 25px;
     }
   }
 }

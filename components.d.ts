@@ -8,5 +8,13 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     IParkCloseSmall: typeof import('~icons/icon-park-outline/close-small')['default']
+    IParkDown: typeof import('~icons/icon-park-outline/down')['default']
+    IParkFullScreen: typeof import('~icons/icon-park-outline/full-screen')['default']
+    IParkRefresh: typeof import('~icons/icon-park-outline/refresh')['default']
+    IParkRemind: typeof import('~icons/icon-park-outline/remind')['default']
+    IParkSearch: typeof import('~icons/icon-park-outline/search')['default']
+    IParkSettingTwo: typeof import('~icons/icon-park-outline/setting-two')['default']
+    IParkSunOne: typeof import('~icons/icon-park-outline/sun-one')['default']
+    IParkTranslate: typeof import('~icons/icon-park-outline/translate')['default']
   }
 }
