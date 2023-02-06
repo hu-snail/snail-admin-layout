@@ -119,7 +119,7 @@ const translateX = x => {
 };
 
 const closeTab = (path, index) => {
-  const itemDom = document.getElementById(`item_${path}`);
+  const itemDom = document.getElementById(`item_${path}`) as Element;
   itemDom.className += " animate__slideOutDown";
   setTimeout(() => {
     let len = tabList.value.length;

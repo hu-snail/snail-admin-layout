@@ -7,7 +7,7 @@ import Logo from '../../logo/index.vue'
 <template>
   <el-container class="default-layout-container">
     <el-aside class="aside-wrapper" width="220px">
-      <div class="logo-container">Snail</div>
+     <Logo />
     </el-aside>
     <el-container class="main-wrapper">
       <div class="top-container fixed">
