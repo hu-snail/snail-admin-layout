@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import TabBar from "../../tabbar/index.vue";
 import NavBar from "../../navbar/index.vue";
+import Logo from '../../logo/index.vue'
 </script>
 
 <template>
   <el-container class="default-layout-container">
-    <el-aside class="aside-wrapper" width="200px">
+    <el-aside class="aside-wrapper" width="220px">
       <div class="logo-container">Snail</div>
     </el-aside>
     <el-container class="main-wrapper">
