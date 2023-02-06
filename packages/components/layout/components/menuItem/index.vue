@@ -1,32 +1,67 @@
+<script lang="ts" setup>
+  defineProps({
+    item: {
+      type: Object,
+      default: () => {
+        return {};
+      },
+    },
+  });
+
+</script>
+
+<script lang="ts">
+  export default {
+    name: 'MenuItem',
+  };
+</script>
 <template>
-  <el-sub-menu index="1">
+  <el-menu-item
+    :key="item.path"
+    :index="item.children ? item.children[0].path : item.path"
+    v-if="!item.meta || !item.children"
+  >
+    <component
+      class="menu-icon"
+      v-if="item.children ? item.children[0].meta.icon : item.meta.icon"
+      theme="outline"
+      size="14"
+      strokeWidth="3"
+      :is="item.children ? item.children[0].meta.icon : item.meta.icon"
+    />
     <template #title>
-      <el-icon><location /></el-icon>
-      <span>Navigator One</span>
+      <span class="title">
+        {{ item.children ? item.children[0].meta.title : item.meta.title }}
+      </span>
     </template>
-    <el-menu-item-group>
-      <template #title><span>Group One</span></template>
-      <el-menu-item index="1-1">item one</el-menu-item>
-      <el-menu-item index="1-2">item two</el-menu-item>
-    </el-menu-item-group>
-    <el-menu-item-group title="Group Two">
-      <el-menu-item index="1-3">item three</el-menu-item>
-    </el-menu-item-group>
-    <el-sub-menu index="1-4">
-      <template #title><span>item four</span></template>
-      <el-menu-item index="1-4-1">item one</el-menu-item>
-    </el-sub-menu>
+  </el-menu-item>
+  <el-sub-menu :index="item.path" v-else>
+    <template #title>
+      <component
+        class="menu-icon"
+        v-if="item.meta.icon"
+        theme="outline"
+        size="14"
+        strokeWidth="3"
+        :is="item.meta.icon"
+      />
+      <span class="title">{{ item.meta.title }}</span>
+    </template>
+    <template v-for="(option, index) in item.children">
+      <menu-item v-if="option.children" :key="option.path" :item="option" />
+      <el-menu-item v-else :index="option.path" :key="index">
+        <component
+          class="menu-icon"
+          v-if="option.meta.icon"
+          theme="outline"
+          size="14"
+          strokeWidth="3"
+          :is="option.meta.icon"
+        />
+        <span class="title">
+          {{ option.meta.title }}
+        </span>
+      </el-menu-item>
+    </template>
   </el-sub-menu>
-  <el-menu-item index="2">
-    <el-icon><icon-menu /></el-icon>
-    <template #title>Navigator Two</template>
-  </el-menu-item>
-  <el-menu-item index="3" disabled>
-    <el-icon><document /></el-icon>
-    <template #title>Navigator Three</template>
-  </el-menu-item>
-  <el-menu-item index="4">
-    <el-icon><setting /></el-icon>
-    <template #title>Navigator Four</template>
-  </el-menu-item>
 </template>

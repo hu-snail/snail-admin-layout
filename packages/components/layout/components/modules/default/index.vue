@@ -2,12 +2,14 @@
 import TabBar from "../../tabbar/index.vue";
 import NavBar from "../../navbar/index.vue";
 import Logo from '../../logo/index.vue'
+import Menu from '../../menu/index.vue'
 </script>
 
 <template>
   <el-container class="default-layout-container">
     <el-aside class="aside-wrapper" width="220px">
      <Logo />
+     <Menu />
     </el-aside>
     <el-container class="main-wrapper">
       <div class="top-container fixed">
@@ -26,6 +28,8 @@ import Logo from '../../logo/index.vue'
 .default-layout-container {
   min-height: 100%;
   .aside-wrapper {
+    display: flex;
+    flex-direction: column;
   }
   .main-wrapper {
     background-color: #f2f3f5;
