@@ -1,6 +1,9 @@
 import * as path from "path";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Components from 'unplugin-vue-components/vite'
 import { terser } from "rollup-plugin-terser";
 import { defineConfig, type UserConfig } from "vite";
 
@@ -42,7 +45,20 @@ function getConfigs(): UserConfig {
 
 // https://cn.vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vue(),
+    vueJsx(),
+    Components({
+      resolvers: [
+        IconsResolver({
+          alias: {
+            park: 'icon-park-outline',
+          },
+        }
+        ),
+      ]
+    }),
+    Icons({ autoInstall: true })],
   server: {
     host: "0.0.0.0"
   },

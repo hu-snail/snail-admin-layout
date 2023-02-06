@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick, reactive, watch } from "vue";
 import { Close } from "@element-plus/icons-vue";
-
+import Shield from "~icons/icon-park-outline/shield";
 const tabsRef = ref();
 
 const tabList = ref([
@@ -164,8 +164,8 @@ const previous = () => {
         >
           <span class="tab-title">{{ item.title }}</span>
           <el-icon class="icon-close" @click.stop="closeTab(item.path, index)"
-            ><Close
-          /></el-icon>
+            ><i-park-close-small theme="outline" size="24" fill="#333"/>
+        </el-icon>
         </div>
       </div>
     </div>
@@ -259,7 +259,7 @@ const previous = () => {
           clip-path: inset(50% 50% 0 -10px);
         }
         &:hover {
-          background-color: rgba($color: #fff, $alpha: 0.5);
+          background-color: rgba($color: #fff, $alpha: 0.6);
           .tab-title::before {
             display: none;
           }
