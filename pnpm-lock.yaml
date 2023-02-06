@@ -9,6 +9,7 @@ specifiers:
   '@types/node': ^18.0.0
   '@vitejs/plugin-vue': ^4.0.0
   '@vitejs/plugin-vue-jsx': ^2.0.1
+  animate.css: ^4.1.1
   commitizen: ^4.2.4
   commitlint: ^17.0.3
   commitlint-config-cz: ^0.13.3
@@ -30,6 +31,7 @@ specifiers:
 dependencies:
   '@element-plus/icons-vue': 2.0.10_vue@3.2.45
   '@iconify-json/icon-park-outline': 1.1.9
+  animate.css: 4.1.1
   element-plus: 2.2.28_vue@3.2.45
   vue: 3.2.45
 
@@ -1112,6 +1114,10 @@ packages:
       require-from-string: 2.0.2
       uri-js: 4.4.1
     dev: true
+
+  /animate.css/4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
+    dev: false
 
   /ansi-escapes/3.2.0:
     resolution: {integrity: sha512-cBhpre4ma+U0T1oM5fXg7Dy1Jw7zzwv7lt/GoCpr+hDQJoYnKVPLL4dCvSEFMmQurOQvSrwT7SL/DAlhBI97RQ==}

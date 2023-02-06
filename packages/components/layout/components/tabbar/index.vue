@@ -119,6 +119,35 @@ const translateX = x => {
   tabOption.moveX = x < 0 ? 0 : x;
   tabsRef.value.children[0].style.transform = `translateX(-${tabOption.moveX}px)`;
 };
+
+const closeTab = (path, index) => {
+  const itemDom = document.getElementById(`item_${path}`);
+  itemDom.className += " animate__slideOutDown";
+  setTimeout(() => {
+    let len = tabList.value.length;
+    if (len > 1) {
+      tabList.value.splice(index, 1);
+      nextTick(() => {
+        // 关闭第0个标签，并且为选中状态的触发
+        if (index === 0 && path === tabOption.activeTab) {
+          clickTab(tabList.value[0].path);
+        }
+        // 关闭的标签为选中状态的触发
+        else if (path === tabOption.activeTab) {
+          clickTab(tabList.value[index - 1].path);
+        }
+        previous();
+      });
+    }
+  }, 400);
+};
+
+const previous = () => {
+  if (tabOption.moveX > 0) {
+    tabOption.moveX -= tabOption.width;
+    translateX(tabOption.moveX);
+  }
+};
 </script>
 
 <template>
@@ -126,14 +155,17 @@ const translateX = x => {
     <div class="tab-wrapper" ref="tabsRef">
       <div class="tabs">
         <div
-          class="tab-item"
-          :class="{ active: item.path === tabOption.activeTab }"
-          v-for="item in tabList"
+          class="tab-item animate__animated"
+          :id="'item_' + item.path"
+          :class="{ active: item.path === 1 }"
+          v-for="(item, index) in tabList"
           :key="item.path"
           @click.stop="clickTab(item.path)"
         >
           <span class="tab-title">{{ item.title }}</span>
-          <el-icon class="icon-close"><Close /></el-icon>
+          <el-icon class="icon-close" @click.stop="closeTab(item.path, index)"
+            ><Close
+          /></el-icon>
         </div>
       </div>
     </div>
@@ -156,7 +188,7 @@ const translateX = x => {
       font-size: 14px;
       box-sizing: border-box;
       align-items: center;
-      transition: 0.2s;
+      transition: 0.3s;
       .tab-item.active + .tab-item {
         .tab-title::before {
           display: none;
@@ -173,7 +205,7 @@ const translateX = x => {
         padding: 8px 15px 8px 0;
         border-radius: 12px 12px 0 0;
         cursor: pointer;
-        transition: 0.2s;
+        transition: 0.3s;
         color: #a8abb2;
         &:first-child {
           .tab-title::before {
@@ -194,7 +226,17 @@ const translateX = x => {
             width: 1px;
             content: "";
             background-color: #bababa;
-            transition: display 0.5s;
+            transition: display 0.3s;
+          }
+        }
+        .icon-close {
+          transition: background-color 0.3s;
+          padding: 2px;
+          border-radius: 50%;
+          cursor: pointer;
+
+          &:hover {
+            background: #dbdbdb;
           }
         }
         &::before,
@@ -206,7 +248,7 @@ const translateX = x => {
           height: 20px;
           border-radius: 100%;
           box-shadow: 0 0 0 40px transparent;
-          transition: 0.2s;
+          transition: 0.3s;
         }
         &::before {
           left: -20px;
