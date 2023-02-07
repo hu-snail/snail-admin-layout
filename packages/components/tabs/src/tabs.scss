@@ -1,0 +1,114 @@
+.tabbar-container {
+    position: relative;
+    height: 40px;
+    background-color: #f2f3f5;
+    transition: background-color 0.3s;
+    .tab-wrapper {
+      overflow: hidden;
+      .tabs {
+        display: flex;
+        background-color: #f2f3f5;
+        padding: 5px 5px 0 15px;
+        font-size: 14px;
+        box-sizing: border-box;
+        align-items: center;
+        transition: 0.3s;
+        .tab-item.active + .tab-item {
+          .tab-title::before {
+            display: none;
+          }
+        }
+        .tab-item {
+          width: 130px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-shrink: 0;
+          position: relative;
+          background-color: transparent;
+          padding: 8px 15px 8px 0;
+          border-radius: 12px 12px 0 0;
+          cursor: pointer;
+          transition: 0.3s;
+          color: #a8abb2;
+          &:first-child {
+            .tab-title::before {
+              display: none;
+            }
+          }
+          .tab-title {
+            position: relative;
+            padding-left: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            &::before {
+              position: absolute;
+              bottom: 1px;
+              left: 0px;
+              height: 16px;
+              width: 1px;
+              content: "";
+              background-color: #bababa;
+              transition: display 0.3s;
+            }
+          }
+          .icon-close {
+            transition: background-color 0.3s;
+            padding: 2px;
+            border-radius: 50%;
+            cursor: pointer;
+  
+            &:hover {
+              background: #dbdbdb;
+            }
+          }
+          &::before,
+          &::after {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            box-shadow: 0 0 0 40px transparent;
+            transition: 0.3s;
+          }
+          &::before {
+            left: -20px;
+            clip-path: inset(50% -10px 0 50%);
+          }
+          &::after {
+            right: -20px;
+            clip-path: inset(50% 50% 0 -10px);
+          }
+          &:hover {
+            background-color: rgba($color: #fff, $alpha: 0.6);
+            .tab-title::before {
+              display: none;
+            }
+            & + .tab-item {
+              .tab-title::before {
+                display: none;
+              }
+            }
+          }
+          &:hover::before,
+          &:hover::after {
+            box-shadow: 0 0 0 30px rgba($color: #fff, $alpha: 0.5);
+          }
+          &.active {
+            background-color: #fff;
+            z-index: 1;
+            &::before,
+            &::after {
+              box-shadow: 0 0 0 30px #fff;
+            }
+            .tab-title::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }

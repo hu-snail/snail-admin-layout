@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { SnailLayout } from "../packages";
+// import { SnTbas } from "../packages/components/tabs";
 const data = ref([
   {
     path: '/',
@@ -66,16 +66,7 @@ const data = ref([
 </script>
 
 <template>
-  <SnailLayout
-  :data="data"
-  type="default"
-  :header="{height: '60px'}"
-  >
-    <template #logo>
-      <img src="" />
-    </template>
-    <div>2222</div>
-  </SnailLayout>
+  <SnTabs />
 </template>
 
 <style>

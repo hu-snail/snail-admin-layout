@@ -151,6 +151,11 @@ import { DArrowLeft } from "@element-plus/icons-vue";
     }
     .user-container {
       margin-left: 25px;
+      display: flex;
+      align-items: center;
+      .el-dropdown-link {
+        display: flex;
+      }
     }
   }
 }

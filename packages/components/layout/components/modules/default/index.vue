@@ -16,7 +16,9 @@ import Menu from '../../menu/index.vue'
         <TabBar />
         <NavBar />
       </div>
-      <el-main class="main-container"> 111 </el-main>
+      <el-main class="main-container"> 
+        <slot></slot>
+      </el-main>
       <el-footer class="copyright">
         <span>Copyright</span> <span class="time"> ©2020-2022</span> snail-admin
       </el-footer>
@@ -30,6 +32,8 @@ import Menu from '../../menu/index.vue'
   .aside-wrapper {
     display: flex;
     flex-direction: column;
+    box-shadow: 10px 0 10px -10px var(--g-box-shadow-color);
+    transition: background-color .3s,var(--el-transition-box-shadow),left .3s,width .3s;
   }
   .main-wrapper {
     background-color: #f2f3f5;
@@ -41,6 +45,8 @@ import Menu from '../../menu/index.vue'
       position: absolute;
       z-index: 999;
       top: 0;
+      right: 0;
+      left: 220px;
       transition: width 0.3s, top 0.3s, transform 0.3s,
         var(--el-transition-box-shadow);
     }

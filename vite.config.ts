@@ -15,7 +15,7 @@ function getConfigs(): UserConfig {
         publicDir: false,
         build: {
           lib: {
-            entry: path.resolve(__dirname, "packages/index.ts"),
+            entry: path.resolve(__dirname, "packages/components/index.ts"),
             name: "@snailadmin/layout",
             fileName: format => `index.${format}.js`
           },

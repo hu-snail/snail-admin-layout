@@ -176,7 +176,7 @@ const previous = () => {
   height: 40px;
   background-color: #f2f3f5;
   transition: background-color 0.3s;
-  width: calc(100vw - 200px);
+  // width: calc(100vw - 200px);
   .tab-wrapper {
     overflow: hidden;
     .tabs {

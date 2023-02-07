@@ -1,7 +1,7 @@
 import props from "./props";
-import Renderer from "../renderer";
-import { isFunction } from "../helper";
-import { SnailLayoutProps, MenuProps } from "../../types";
+import Renderer from "../../renderer";
+import { isFunction } from "../../helper";
+import { SnailLayoutProps, MenuProps } from "../../../types";
 import { defineComponent, toRefs, unref } from "vue";
 import {
   ElContainer,
@@ -11,7 +11,7 @@ import {
   ElSubMenu
 } from "element-plus";
 const { Header, Aside, Main, Footer } = ElContainer;
-import { DefaultLayout } from "./components";
+import { DefaultLayout } from "../components";
 
 export default defineComponent({
   name: "SnailLayout",
@@ -31,7 +31,7 @@ export default defineComponent({
 
     const renderComponent = () => {
       return {
-        default: <DefaultLayout {...props} />
+        default: <DefaultLayout {...props} ></DefaultLayout>
       }[unref(type)];
     };
 

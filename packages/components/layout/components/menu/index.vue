@@ -2,7 +2,6 @@
   import MenuItem from '../menuItem/index.vue'
   import { ref } from 'vue'
   const isCollapse = ref(false)
-
   const routes =  ref([
   {
     path: '/',
@@ -16,7 +15,7 @@
         component:'',
         meta: {
           title: '首页',
-          icon: 'icon-home',
+          icon: 'i-park-home',
           affix: true,
           noKeepAlive: true,
         },

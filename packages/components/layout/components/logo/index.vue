@@ -3,7 +3,8 @@
 
 <template>
   <div class="logo-container">
-    <el-avatar shape="square" src="../../../../../public/logo.png"></el-avatar>
+    <img class="logo-img" src="../../../../../public/logo.png" alt="">
+    <!-- <el-avatar fit="fill" shape="square" src="../../../../../public/logo.png"></el-avatar> -->
     <h1 class="title">Snail-Admin</h1>
   </div>
 </template>
@@ -19,6 +20,9 @@
       font-size: 20px;
       font-weight: 450;
       padding-left: 15px;
+    }
+    .logo-img {
+      height: 30px;
     }
   }
 </style>
