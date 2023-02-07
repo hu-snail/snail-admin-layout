@@ -6,61 +6,66 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import { terser } from "rollup-plugin-terser";
 import { defineConfig, type UserConfig } from "vite";
+import { visualizer } from "rollup-plugin-visualizer";
 
-const lifecycle = process.env.npm_lifecycle_event;
+// const lifecycle = process.env.npm_lifecycle_event;
 
-function getConfigs(): UserConfig {
-  return lifecycle === "lib"
-    ? {
-        publicDir: false,
-        build: {
-          lib: {
-            entry: path.resolve(__dirname, "packages/components/index.ts"),
-            name: "@snailadmin/layout",
-            fileName: format => `index.${format}.js`
-          },
-          // https://rollupjs.org/guide/en/#big-list-of-options
-          rollupOptions: {
-            treeshake: true,
-            external: ["vue", "element-plus"],
-            output: {
-              globals: {
-                vue: "vue",
-                "element-plus": "elementPlus"
-              },
-              exports: "named"
+export const getConfig = (): UserConfig => {
+  const config: UserConfig = {
+    plugins: [
+      vue(),
+      vueJsx(),
+      Components({
+        resolvers: [
+          IconsResolver({
+            alias: {
+              park: 'icon-park-outline',
             },
-            plugins: [terser({ compress: { drop_console: true } })]
           }
-        }
-      }
-    : {
-        base: "/snail-admin-layout/",
-        build: {
-          sourcemap: false,
-          chunkSizeWarningLimit: 4000
-        }
-      };
-}
-
-// https://cn.vitejs.dev/guide/build.html#library-mode
-export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    Components({
-      resolvers: [
-        IconsResolver({
-          alias: {
-            park: 'icon-park-outline',
+          ),
+        ]
+      }),
+      Icons({ autoInstall: true }),
+      visualizer({
+        // 打包完成后自动打开浏览器，显示产物体积报告
+        open: true,
+      }),
+    ],
+    server: {
+      host: '0.0.0.0'
+    },
+    build: {
+      rollupOptions: {
+        treeshake: true,
+        external: ["vue", "element-plus"],
+        output: {
+          exports: "named",
+          globals: {
+            vue: "vue",
+            "element-plus": "elementPlus"
           },
+        },
+       
+
+      },
+      minify: 'terser', // boolean | 'terser' | 'esbuild'
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          pure_funcs: ['console.error', 'console.warn']
         }
-        ),
-      ]
-    }),
-    Icons({ autoInstall: true })],
-  server: {
-    host: "0.0.0.0"
-  },
-  ...getConfigs()
-});
+      },
+      sourcemap: false, // 输出单独 sourcemap文件
+      lib: {
+        entry: path.resolve(__dirname, "packages/components/index.ts"),
+        name: "@snailadmin/ui",
+        fileName: "snail-admin",
+        formats: ["es", "umd"], // 导出模块类型
+      },
+      outDir: "./dist",
+    }
+  };
+  return config;
+};
+export default defineConfig(getConfig());
+
