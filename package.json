@@ -43,14 +43,14 @@
   },
   "main": "@snailadmin/ui.umd.js",
   "module": "@snailadmin/ui.mjs",
-  "types": "dist/index.d.ts",
-  "unpkg": "dist/index.umd.js",
-  "jsdelivr": "dist/index.umd.js",
+  "types": "dist/components/index.d.ts",
+  "unpkg": "dist/snail-admin.umd.js",
+  "jsdelivr": "dist/snail-admin.umd.js",
   "exports": {
     ".": {
-      "require": "./dist/index.umd.js",
-      "import": "./dist/index.es.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/snail-admin.umd.js",
+      "import": "./dist/snail-admin.mjs",
+      "types": "./dist/components/index.d.ts"
     }
   },
   "sideEffects": false,
