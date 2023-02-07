@@ -31,7 +31,7 @@ export default defineComponent({
 
     const renderComponent = () => {
       return {
-        default: <DefaultLayout {...props} ></DefaultLayout>
+        default: <DefaultLayout {...props}></DefaultLayout>
       }[unref(type)];
     };
 

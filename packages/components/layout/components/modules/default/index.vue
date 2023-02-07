@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 import TabBar from "../../tabbar/index.vue";
 import NavBar from "../../navbar/index.vue";
-import Logo from '../../logo/index.vue'
-import Menu from '../../menu/index.vue'
+import Logo from "../../logo/index.vue";
+import Menu from "../../menu/index.vue";
 </script>
 
 <template>
   <el-container class="default-layout-container">
     <el-aside class="aside-wrapper" width="220px">
-     <Logo />
-     <Menu />
+      <Logo />
+      <Menu />
     </el-aside>
     <el-container class="main-wrapper">
       <div class="top-container fixed">
         <TabBar />
         <NavBar />
       </div>
-      <el-main class="main-container"> 
+      <el-main class="main-container">
         <slot></slot>
       </el-main>
       <el-footer class="copyright">
@@ -33,7 +33,8 @@ import Menu from '../../menu/index.vue'
     display: flex;
     flex-direction: column;
     box-shadow: 10px 0 10px -10px var(--g-box-shadow-color);
-    transition: background-color .3s,var(--el-transition-box-shadow),left .3s,width .3s;
+    transition: background-color 0.3s, var(--el-transition-box-shadow),
+      left 0.3s, width 0.3s;
   }
   .main-wrapper {
     background-color: #f2f3f5;

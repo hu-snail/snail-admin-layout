@@ -1,19 +1,18 @@
 <script lang="ts" setup>
-  defineProps({
-    item: {
-      type: Object,
-      default: () => {
-        return {};
-      },
-    },
-  });
-
+defineProps({
+  item: {
+    type: Object,
+    default: () => {
+      return {};
+    }
+  }
+});
 </script>
 
 <script lang="ts">
-  export default {
-    name: 'MenuItem',
-  };
+export default {
+  name: "MenuItem"
+};
 </script>
 <template>
   <el-menu-item

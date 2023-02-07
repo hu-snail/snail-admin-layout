@@ -5,7 +5,7 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import 'animate.css';
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
-import { SnTabs } from "../dist/index.es";
+import SnTabs from "../dist/index.es";
 import '../dist/style.css'
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
