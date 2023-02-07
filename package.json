@@ -1,5 +1,5 @@
 {
-  "name": "@snailadmin/ui",
+  "name": "snail-admin",
   "private": true,
   "version": "1.0.0",
   "packageManager": "pnpm@7.3.0",
@@ -41,8 +41,8 @@
     "type": "git",
     "url": "https://github.com/hu-snail/snail-admin-layout"
   },
-  "main": "@snailadmin/ui.umd.js",
-  "module": "@snailadmin/ui.mjs",
+  "main": "snail-admin.umd.js",
+  "module": "snail-admin.mjs",
   "types": "dist/components/index.d.ts",
   "unpkg": "dist/snail-admin.umd.js",
   "jsdelivr": "dist/snail-admin.umd.js",

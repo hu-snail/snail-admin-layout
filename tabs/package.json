@@ -1,5 +1,5 @@
 {
-  "name": "@snailadmin/ui/tabs",
+  "name": "snail-admin/tabs",
   "main": "index.umd.js",
   "module": "index.mjs"
 }

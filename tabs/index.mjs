@@ -132,3 +132,4 @@ export {
   SnTabs,
   SnTabs as default
 };
+//# sourceMappingURL=index.mjs.map
