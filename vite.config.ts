@@ -55,10 +55,10 @@ export const getConfig = (): UserConfig => {
           pure_funcs: ['console.error', 'console.warn']
         }
       },
-      sourcemap: false, // 输出单独 sourcemap文件
+      sourcemap: true, // 输出单独 sourcemap文件
       lib: {
         entry: path.resolve(__dirname, "packages/components/index.ts"),
-        name: "@snailadmin/ui",
+        name: "@snailadmin",
         fileName: "snail-admin",
         formats: ["es", "umd"], // 导出模块类型
       },

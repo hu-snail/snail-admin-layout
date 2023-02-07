@@ -1,5 +1,5 @@
 {
-  "name": "@snailadmin/ui",
+  "name": "snail-admin",
   "private": true,
   "version": "1.0.0",
   "packageManager": "pnpm@7.3.0",
