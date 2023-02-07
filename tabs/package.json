@@ -1,0 +1,5 @@
+{
+  "name": "@snailadmin/ui/tabs",
+  "main": "index.umd.js",
+  "module": "index.mjs"
+}
